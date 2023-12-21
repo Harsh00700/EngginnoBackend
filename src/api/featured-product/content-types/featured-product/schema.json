@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "featured_products",
+  "info": {
+    "singularName": "featured-product",
+    "pluralName": "featured-products",
+    "displayName": "featured_products",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    }
+  }
+}
