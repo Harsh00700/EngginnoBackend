@@ -1,4 +1,3 @@
-
 module.exports = ({env}) => ({
     upload: {
       config: {
@@ -12,6 +11,5 @@ module.exports = ({env}) => ({
         //   directory: env('DO_SPACE_DIRECTORY'),
         }
       },
-    },
-    // ...
+    }
   })
