@@ -682,7 +682,7 @@ export interface ApiCertificateCertificate extends Schema.CollectionType {
   info: {
     singularName: 'certificate';
     pluralName: 'certificates';
-    displayName: 'Certificates';
+    displayName: 'certificates';
     description: '';
   };
   options: {
@@ -705,6 +705,40 @@ export interface ApiCertificateCertificate extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::certificate.certificate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiContactContact extends Schema.CollectionType {
+  collectionName: 'contacts';
+  info: {
+    singularName: 'contact';
+    pluralName: 'contacts';
+    displayName: 'contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    contact_number: Attribute.BigInteger;
+    email: Attribute.String;
+    subject: Attribute.String;
+    message: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact.contact',
       'oneToOne',
       'admin::user'
     > &
@@ -839,6 +873,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::certificate.certificate': ApiCertificateCertificate;
+      'api::contact.contact': ApiContactContact;
       'api::featured-product.featured-product': ApiFeaturedProductFeaturedProduct;
       'api::new-arrival.new-arrival': ApiNewArrivalNewArrival;
       'api::product.product': ApiProductProduct;
