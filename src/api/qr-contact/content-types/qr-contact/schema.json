@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "contacts",
+  "collectionName": "qr_contacts",
   "info": {
-    "singularName": "contact",
-    "pluralName": "contacts",
-    "displayName": "contact",
+    "singularName": "qr-contact",
+    "pluralName": "qr-contacts",
+    "displayName": "QR-Contact",
     "description": ""
   },
   "options": {
@@ -17,12 +17,6 @@
     },
     "contact_number": {
       "type": "biginteger"
-    },
-    "subject": {
-      "type": "string"
-    },
-    "message": {
-      "type": "text"
     },
     "email": {
       "type": "email"

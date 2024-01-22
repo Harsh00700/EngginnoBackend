@@ -677,6 +677,44 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCallbackFormCallbackForm extends Schema.CollectionType {
+  collectionName: 'callback_forms';
+  info: {
+    singularName: 'callback-form';
+    pluralName: 'callback-forms';
+    displayName: 'Callback_form';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    contact_number: Attribute.BigInteger;
+    product_id: Attribute.Relation<
+      'api::callback-form.callback-form',
+      'oneToOne',
+      'api::product.product'
+    >;
+    email: Attribute.Email;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::callback-form.callback-form',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::callback-form.callback-form',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCertificateCertificate extends Schema.CollectionType {
   collectionName: 'certificates';
   info: {
@@ -718,6 +756,7 @@ export interface ApiContactContact extends Schema.CollectionType {
     singularName: 'contact';
     pluralName: 'contacts';
     displayName: 'contact';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -725,9 +764,9 @@ export interface ApiContactContact extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     contact_number: Attribute.BigInteger;
-    email: Attribute.String;
     subject: Attribute.String;
     message: Attribute.Text;
+    email: Attribute.Email;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -856,6 +895,39 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
+export interface ApiQrContactQrContact extends Schema.CollectionType {
+  collectionName: 'qr_contacts';
+  info: {
+    singularName: 'qr-contact';
+    pluralName: 'qr-contacts';
+    displayName: 'QR-Contact';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    contact_number: Attribute.BigInteger;
+    email: Attribute.Email;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::qr-contact.qr-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::qr-contact.qr-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -872,11 +944,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::callback-form.callback-form': ApiCallbackFormCallbackForm;
       'api::certificate.certificate': ApiCertificateCertificate;
       'api::contact.contact': ApiContactContact;
       'api::featured-product.featured-product': ApiFeaturedProductFeaturedProduct;
       'api::new-arrival.new-arrival': ApiNewArrivalNewArrival;
       'api::product.product': ApiProductProduct;
+      'api::qr-contact.qr-contact': ApiQrContactQrContact;
     }
   }
 }

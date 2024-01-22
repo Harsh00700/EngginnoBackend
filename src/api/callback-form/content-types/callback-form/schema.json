@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "contacts",
+  "collectionName": "callback_forms",
   "info": {
-    "singularName": "contact",
-    "pluralName": "contacts",
-    "displayName": "contact",
+    "singularName": "callback-form",
+    "pluralName": "callback-forms",
+    "displayName": "Callback_form",
     "description": ""
   },
   "options": {
@@ -18,11 +18,10 @@
     "contact_number": {
       "type": "biginteger"
     },
-    "subject": {
-      "type": "string"
-    },
-    "message": {
-      "type": "text"
+    "product_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
     },
     "email": {
       "type": "email"
